@@ -13,8 +13,7 @@ def punch(cookie):
         'x-csrf-token':'1530786066:F3dU7fTlJSTWKNA9XMdI76gdJGRdkxQqxafCS4PgGw8=',
         'x-requested-with':'XMLHttpRequest'
     })
-    resp.encoding='utf-8'
-    return resp.text
+    return resp.content.decode("gbk")
 
 if __name__=="__main__":
     for i in range(1,len(sys.argv)):
