@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2019
     steps:
       - name: Download script
         run: Invoke-WebRequest https://raw.githubusercontent.com/A6n6d6y6/LuoguSignin/refs/heads/main/script.py -OutFile script.py
@@ -17,4 +17,3 @@ jobs:
         run: python .\script.py $env:COOKIE
         env:
           COOKIE: ${{ secrets.COOKIE }}
-          PYTHONIOENCODING: utf-8
