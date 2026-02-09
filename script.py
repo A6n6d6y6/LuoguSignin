@@ -1,11 +1,10 @@
 # coding=utf-8
 
-import requests
-import json
-import sys
+import requests,json,sys,codecs
+sys.stdout=codecs.open(sys.stdout.fileno(), mode='w',encoding='utf-8',errors='ignore')
 
 def punch(cookie):
-    return requests.get('https://www.luogu.com.cn/index/ajax_punch', headers={
+	return requests.get('https://www.luogu.com.cn/index/ajax_punch', headers={
 		'accept':'*/*',
 		'accept-encoding':'gzip,deflate,br',
 		'accept-language':'zh-CN,zh;q=0.9',
@@ -19,19 +18,15 @@ def punch(cookie):
 	}).text
 
 if __name__ == "__main__":
-    print(f"Script Name: {sys.argv[0]}")
-    for i in range(1, len(sys.argv)):
-        if sys.argv[i][-1] != '*':
-            print(f"Cookie: {sys.argv[i][:-10]}zkyakioi")
-            print(f"sjyakioi{sys.argv[i][-10:]}")
-        response = punch(sys.argv[i])
-        print(f"No. {i}:")
-        try:
-            print(response)
-            tmp = json.loads(response)
-            if tmp['code'] == 200:
-                print('code =', tmp['code'], 'message =', tmp['more']['html'])
-            else:
-                print('code =', tmp['code'], 'message =', tmp['message'])
-        except Exception as err:
-            print(f"<{err}>")
+	for i in range(1, len(sys.argv)):
+		print(f"Cookie: {sys.argv[i]}")
+		response=punch(sys.argv[i])
+		try:
+			print(response)
+			tmp=json.loads(response)
+			if tmp['code']==200:
+				print('code=',tmp['code'],'message=',tmp['more']['html'])
+			else:
+				print('code=',tmp['code'],'message=',tmp['message'])
+		except Exception as err:
+			print(f"<{err}>")
