@@ -21,6 +21,7 @@ if __name__=="__main__":
 	for i in range(1,len(sys.argv)):
 		print(f"Cookie:{sys.argv[i]}")
 		response=punch(sys.argv[i])
+		print(response)
 		try:
 			tmp=json.loads(response)
 			if tmp['code']==200:
