@@ -1,0 +1,19 @@
+name: Luogu auto sign in
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Download script
+        run: Invoke-WebRequest https://raw.githubusercontent.com/A6n6d6y6/LuoguSignin/refs/heads/main/script.py -OutFile script.py
+      - name: Install dependencies
+        run: pip install requests
+      - name: Run script
+        run: python .\script.py $env:COOKIE
+        env:
+          COOKIE: ${{ secrets.COOKIE }}
