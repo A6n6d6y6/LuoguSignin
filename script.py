@@ -1,4 +1,9 @@
-import requests,json,sys
+# coding=utf-8
+
+import requests,json,sys,io
+
+sys.stdout=io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+sys.stderr=io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 def punch(cookie):
 	res=requests.get('https://www.luogu.com.cn/index/ajax_punch',headers={
