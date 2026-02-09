@@ -13,7 +13,7 @@ def punch(cookie):
 		'x-csrf-token':'1530786066:F3dU7fTlJSTWKNA9XMdI76gdJGRdkxQqxafCS4PgGw8=',
 		'x-requested-with':'XMLHttpRequest'
 	})
-	resp.encoding = 'utf-8'
+	resp.encoding='utf-8'
 	return resp.text
 
 if __name__=="__main__":
@@ -27,5 +27,5 @@ if __name__=="__main__":
 				print('code=',tmp['code'],'message =',tmp['more']['html'])
 			else:
 				print('code=',tmp['code'],'message =',tmp['message'])
-			except Exception as err:
-				print(f"<{err}>")
+		except Exception as err:
+			print(f"<{err}>")
